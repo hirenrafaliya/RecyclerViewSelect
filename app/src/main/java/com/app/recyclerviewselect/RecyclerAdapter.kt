@@ -1,19 +1,19 @@
 package com.app.recyclerviewselect
 
-import android.content.Context
+import android.R
 import android.view.LayoutInflater
-import android.view.View
+import android.view.MenuItem
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.app.recyclerviewselect.databinding.ItemRecyclerBinding
+import com.bumptech.glide.Glide
+
 
 class RecyclerAdapter(
     private val itemList: ArrayList<Item>
 ) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-
-    private val selectedList = ArrayList<Int>()
-    private val checkImgList=ArrayList<ImageView>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -26,19 +26,31 @@ class RecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.tvTitle.text=itemList[position].title
-        holder.binding.layoutParent.setOnClickListener {
-            if (selectedList.contains(position)) {
-                selectedList.remove(position)
-                holder.binding.imgCheck.visibility = View.GONE
+        holder.binding.tvName.text = itemList[position].name
+        holder.binding.tvLocation.text = itemList[position].location
 
-                checkImgList.remove(holder.binding.imgCheck)
-            } else {
-                selectedList.add(position)
-                holder.binding.imgCheck.visibility = View.VISIBLE
+        Glide.with(holder.itemView.context)
+            .load(itemList[position].img)
+            .into(holder.binding.imgProfile)
 
-                checkImgList.add(holder.binding.imgCheck)
-            }
+        holder.binding.imgOptions.setOnClickListener {
+            val popup = PopupMenu(holder.itemView.context, holder.binding.imgOptions)
+            popup.menu.add("Unfolllow")
+            popup.menu.add("Report")
+            popup.setOnMenuItemClickListener(object : MenuItem.OnMenuItemClickListener,
+                PopupMenu.OnMenuItemClickListener {
+                override fun onMenuItemClick(menu: MenuItem?): Boolean {
+                    if (menu!!.order == 0) {
+                        Toast.makeText(holder.itemView.context, "Unfollow", Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        Toast.makeText(holder.itemView.context, "Unfollow", Toast.LENGTH_SHORT).show()
+                    }
+                    return true
+                }
+            })
+            popup.show()
+
         }
     }
 
@@ -46,14 +58,5 @@ class RecyclerAdapter(
 
     class ViewHolder(val binding: ItemRecyclerBinding) : RecyclerView.ViewHolder(binding.root)
 
-    fun clearSelectedItems(){
-        for(img in checkImgList){
-            img.visibility=View.GONE
-        }
-        selectedList.clear()
-    }
 
-    fun getALlSelectedIndexes(): ArrayList<Int> {
-        return selectedList
-    }
 }

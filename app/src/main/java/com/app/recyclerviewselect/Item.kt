@@ -1,5 +1,7 @@
 package com.app.recyclerviewselect
 
 data class Item(
-    val title:String
+    val name:String,
+    val location:String,
+    val img:String
 )
