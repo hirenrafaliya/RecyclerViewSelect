@@ -32,6 +32,7 @@ class ChatActivity : AppCompatActivity() {
 
         recyclerView.adapter = ChatAdapter(chatList)
         val manager = LinearLayoutManager(this)
+        recyclerView.setItemViewCacheSize(100)
         recyclerView.layoutManager = manager
     }
 }

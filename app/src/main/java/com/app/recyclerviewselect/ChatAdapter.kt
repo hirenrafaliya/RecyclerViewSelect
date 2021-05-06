@@ -12,7 +12,7 @@ class ChatAdapter(val chatList: MutableList<Chat>) :
     val isRight = 1
     val isLeft = 0
 
-    val tempList = mutableListOf<Int>()
+    val typeList = mutableListOf<Int>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return if (viewType == isRight) {
@@ -26,16 +26,45 @@ class ChatAdapter(val chatList: MutableList<Chat>) :
         }
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, pos: Int) {
+        val position=holder.layoutPosition
         if (getItemViewType(position) == isRight) {
             holder.view.tvMessage.text = chatList[position].message + position
             holder.view.tvTime.text = chatList[position].time
 
+            if (chatList.size > 1 && position!=0) {
+                if (getItemViewType(position - 1) == isLeft){
+                    holder.view.imgProfile.visibility=View.VISIBLE
+                }
+            }
+            else{
+                holder.view.imgProfile.visibility=View.VISIBLE
+            }
+
+            if(position<chatList.size-1){
+                if(getItemViewType(position+1) == isLeft){
+                    holder.view.tvTime.visibility=View.VISIBLE
+                }
+            }
 
         } else if (getItemViewType(position) == isLeft) {
             holder.view.tvMessage.text = chatList[position].message + position
             holder.view.tvTime.text = chatList[position].time
 
+            if (chatList.size > 1 && position!=0) {
+                if (getItemViewType(position - 1) == isRight){
+                    holder.view.imgProfile.visibility=View.VISIBLE
+                }
+            }
+            else{
+                holder.view.imgProfile.visibility=View.VISIBLE
+            }
+
+            if(position<chatList.size-1){
+                if(getItemViewType(position+1) == isRight){
+                    holder.view.tvTime.visibility=View.VISIBLE
+                }
+            }
 
         }
     }
@@ -45,9 +74,13 @@ class ChatAdapter(val chatList: MutableList<Chat>) :
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (chatList[position].isSender)
+        return if (chatList[position].isSender) {
+            typeList.add(position, isRight)
             isRight
-        else isLeft
+        } else {
+            typeList.add(position, isLeft)
+            isLeft
+        }
     }
 
     class ViewHolder(val view: View) : RecyclerView.ViewHolder(view)
