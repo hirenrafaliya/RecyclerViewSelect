@@ -4,55 +4,86 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:paddingStart="4dp"
-    android:paddingTop="4dp"
-    android:paddingEnd="4dp">
+    android:padding="8dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgIcon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="14dp"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintBottom_toTopOf="@id/viewLine"
+        android:id="@+id/imgProfile"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="12dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintBottom_toTopOf="@+id/viewLine"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvUserName"
+        android:layout_marginStart="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
         android:fontFamily="sans-serif-medium"
-        android:text="User Name"
-        android:textColor="#000"
+        android:text="Robert Torres"
+        android:textColor="@color/black"
         android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgIcon"
-        app:layout_constraintStart_toEndOf="@+id/imgIcon"
-        app:layout_constraintTop_toTopOf="@+id/imgIcon" />
+        app:layout_constraintBottom_toTopOf="@+id/tvMessages"
+        app:layout_constraintStart_toEndOf="@+id/imgProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    <android.widget.Button
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:text="Unblock"
-        android:textColor="#000"
-        android:textAllCaps="false"
-        android:id="@+id/btnAction"
+    <TextView
+        android:id="@+id/tvMessages"
+        android:layout_width="0dp"
+        android:maxLines="1"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="messages"
+        android:textColor="#494949"
+        app:layout_constraintBottom_toBottomOf="@+id/imgProfile"
         android:textSize="14dp"
-        android:background="@drawable/btn_action_storke"
-        app:layout_constraintTop_toTopOf="@+id/imgIcon"
-        app:layout_constraintBottom_toBottomOf="@+id/imgIcon"
+        app:layout_constraintEnd_toStartOf="@+id/tvInfo"
+        app:layout_constraintStart_toEndOf="@+id/imgProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="05:45 PM"
+        android:textColor="#393939"
+        android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/tvMessages"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_info"
+        android:fontFamily="sans-serif-medium"
+        android:paddingStart="6dp"
+        android:paddingTop="2dp"
+        android:paddingEnd="6dp"
+        android:paddingBottom="2dp"
+        android:text="24"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgProfile"
+        app:layout_constraintTop_toBottomOf="@+id/tvTime" />
 
     <View
         android:id="@+id/viewLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#66000000"
+        android:background="#939393"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgIcon" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

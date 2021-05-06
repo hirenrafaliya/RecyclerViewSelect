@@ -3,21 +3,29 @@ package com.app.recyclerviewselect
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_options.*
+import kotlinx.android.synthetic.main.activity_user.*
 
 class UserActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
 
-        val userList = mutableListOf<User>()
-        userList.add(User(R.drawable.ic_launcher_background, "Blob Smith"))
-        userList.add(User(R.drawable.ic_launcher_background, "Blob Smith"))
-        userList.add(User(R.drawable.ic_launcher_background, "Blob Smith"))
-        userList.add(User(R.drawable.ic_launcher_background, "Blob Smith"))
-        userList.add(User(R.drawable.ic_launcher_background, "Blob Smith"))
+        val imgUrl="https://images.unsplash.com/photo-1619565403280-edf4706e9f35?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=gaston-golini-flPxTlU8Sxo-unsplash.jpg"
 
-        recyclerView.adapter = UserAdapter(userList)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val userList= mutableListOf<User>()
+
+        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",5))
+        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",1))
+        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",0))
+        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",22))
+        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",5))
+        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",0))
+        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",0))
+        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",5))
+
+        recyclerView.adapter=UserAdapter(userList)
+        recyclerView.layoutManager=LinearLayoutManager(this)
+
     }
 }
