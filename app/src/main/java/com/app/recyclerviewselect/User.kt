@@ -1,8 +1,8 @@
 package com.app.recyclerviewselect
 
 data class User(
+    val imgUrl: String = "",
     val userName: String = "",
-    val lastMessage: String = "",
+    val text: String = "",
     val time: String = "",
-    val info: Int = 0
 )

@@ -3,7 +3,9 @@ package com.app.recyclerviewselect
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserAdapter(val userList: MutableList<User>) :
@@ -16,13 +18,12 @@ class UserAdapter(val userList: MutableList<User>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.view.tvUserName.text = userList[position].userName
+        var text = "<b>${userList[position].userName}</b> ${userList[position].text}"
+        holder.view.tvText.text = HtmlCompat.fromHtml(text,HtmlCompat.FROM_HTML_MODE_LEGACY)
         holder.view.tvTime.text = userList[position].time
-        holder.view.tvMessages.text = userList[position].lastMessage
-        if (userList[position].info != 0) holder.view.tvInfo.text =
-            userList[position].info.toString()
-        else
-            holder.view.tvInfo.visibility = View.INVISIBLE
+
+        Glide.with(holder.itemView.context).load(userList[position].imgUrl)
+            .into(holder.view.imgProfile)
 
         if (position == userList.size - 1)
             holder.view.viewLine.visibility = View.GONE

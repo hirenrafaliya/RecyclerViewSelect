@@ -15,14 +15,15 @@ class UserActivity : AppCompatActivity() {
 
         val userList= mutableListOf<User>()
 
-        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",5))
-        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",1))
-        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",0))
-        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",22))
-        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",5))
-        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",0))
-        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",0))
-        userList.add(User("Robert Torress","There are many varients avaialble in past","05:53 PM",5))
+        userList.add(User(imgUrl, "Maiaah Jones"," is now following you", "45 mins ago"))
+        userList.add(User(imgUrl, "Maiaah Jones"," is now following you", "45 mins ago"))
+        userList.add(User(imgUrl, "Maiaah Jones"," is now following you", "45 mins ago"))
+        userList.add(User(imgUrl, "Maiaah Jones"," is now following you", "45 mins ago"))
+        userList.add(User(imgUrl, "Maiaah Jones"," is now following you", "45 mins ago"))
+        userList.add(User(imgUrl, "Maiaah Jones"," is now following you", "45 mins ago"))
+        userList.add(User(imgUrl, "Maiaah Jones"," is now following you", "45 mins ago"))
+        userList.add(User(imgUrl, "Maiaah Jones"," is now following you", "45 mins ago"))
+        userList.add(User(imgUrl, "Maiaah Jones"," is now following you", "45 mins ago"))
 
         recyclerView.adapter=UserAdapter(userList)
         recyclerView.layoutManager=LinearLayoutManager(this)
